@@ -1,29 +1,25 @@
 const getHomePage = (req, res) => {
-    res.render('index');
+    res.render('index', {name : "index"});
 }
 
 const getAboutPage = (req, res) => {
-    res.render('about');
+    res.render('about', {name : "about"});
 }
 
 const getServicesPage = (req, res) => {
-    res.render('services');
+    res.render('services', {name : "services"});
 }
 
 const getBlogPage = (req, res) => {
-    res.render('blog');
-}
-
-const getGalleryPage = (req, res) => {
-    res.render('gallery');
+    res.render('blog', {name : "blog"});
 }
 
 const getContactPage = (req, res) => {
-    res.render('contact');
+    res.render('contact', {name : "contact"});
 }
 
 const getProjectsPage = (req, res) => {
-    res.render('projects');
+    res.render('projects', {name : "projects"});
 }
 
 export {
@@ -32,6 +28,5 @@ export {
     getServicesPage,
     getBlogPage,
     getProjectsPage,
-    getGalleryPage,
     getContactPage
 };

@@ -7,15 +7,20 @@ const port = 3000;
 import connection from './db.js'
 import pageRoute from './src/router/pageRouter.js';
 import photoRoute from './src/router/photoRouter.js';
+
 // DB Bağlantısı
 connection();
+
+// Body Parser Middleware
+app.use(express.urlencoded());
+app.use(express.json());
+
+//Static Files Middleware
+app.use(express.static('src/public'));
 
 // Template Engine Middleware
 app.set('view engine', 'ejs');
 app.set('views', 'src/views');
-
-//Static Files Middleware
-app.use(express.static('src/public'));
 
 // Routes
 app.use('/', pageRoute);
