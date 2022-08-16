@@ -3,7 +3,7 @@ const getHomePage = (req, res) => {
 }
 
 const getAboutPage = (req, res) => {
-    res.render('about', {pageName : "about"});
+    res.render('about');
 }
 
 const getServicesPage = (req, res) => {

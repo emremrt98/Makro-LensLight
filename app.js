@@ -5,8 +5,8 @@ const port = 3000;
 
 // First Party Software
 import connection from './db.js'
-import router from './src/router/pageRouter.js';
-
+import pageRoute from './src/router/pageRouter.js';
+import photoRoute from './src/router/photoRouter.js';
 // DB Bağlantısı
 connection();
 
@@ -18,6 +18,7 @@ app.set('views', 'src/views');
 app.use(express.static('src/public'));
 
 // Routes
-app.use('/', router);
+app.use('/', pageRoute);
+app.use('/photos', photoRoute);
 
 app.listen(port, () => console.log("http://localhost:3000/"));
