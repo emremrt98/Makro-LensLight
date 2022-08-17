@@ -19,7 +19,20 @@ const createPhoto = async (req, res) => {
 const getAllPhotos = async (req, res) => {
     try {
         const photos = await Photo.find();
-        res.status(201).render('photos', {photos, name : "photo"});
+        res.status(201).render('photos', { photos, name: "photo" });
+    } catch (error) {
+        res.status(500).json({
+            succeded: false,
+            error
+        })
+    }
+}
+
+const getOnePhotos = async (req, res) => {
+    try {
+        const photo = await Photo.find({ _id: req.params.id });
+        console.log(photo);
+        res.status(201).render('photo', { photo, name: "photo" });
     } catch (error) {
         res.status(500).json({
             succeded: false,
@@ -29,4 +42,4 @@ const getAllPhotos = async (req, res) => {
 }
 
 
-export { createPhoto, getAllPhotos };
+export { createPhoto, getAllPhotos, getOnePhotos };
