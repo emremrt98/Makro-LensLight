@@ -25,7 +25,7 @@ app.set('views', 'src/views');
 
 // Routes
 app.use('/', pageRoute);
-app.use('/register', userRoute);
+app.use('/user', userRoute);
 app.use('/photos', photoRoute);
 
 app.listen(port, () => console.log("http://localhost:3000/"));
