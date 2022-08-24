@@ -22,11 +22,16 @@ const getProjectsPage = (req, res) => {
     res.render('projects', {name : "projects"});
 }
 
+const getRegisterPage = (req, res) => {
+    res.render('register', {name : "register"});
+}
+
 export {
     getHomePage,
     getAboutPage,
     getServicesPage,
     getBlogPage,
     getProjectsPage,
-    getContactPage
+    getContactPage,
+    getRegisterPage
 };

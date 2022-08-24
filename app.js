@@ -7,6 +7,7 @@ const port = 3000;
 import connection from './db.js'
 import pageRoute from './src/router/pageRouter.js';
 import photoRoute from './src/router/photoRouter.js';
+import userRoute from './src/router/userRouter.js';
 
 // DB Bağlantısı
 connection();
@@ -24,6 +25,7 @@ app.set('views', 'src/views');
 
 // Routes
 app.use('/', pageRoute);
+app.use('/register', userRoute);
 app.use('/photos', photoRoute);
 
 app.listen(port, () => console.log("http://localhost:3000/"));

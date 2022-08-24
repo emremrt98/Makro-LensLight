@@ -1,5 +1,6 @@
 import express from "express";
 import * as PageController from '../controller/pageController.js';
+
 const router = express.Router();
 
 router.get('/', PageController.getHomePage);
@@ -8,6 +9,6 @@ router.get('/blog', PageController.getBlogPage);
 router.get('/contact', PageController.getContactPage);
 router.get('/projects', PageController.getProjectsPage);
 router.get('/services', PageController.getServicesPage);
-
+router.get('/register', PageController.getRegisterPage);
 
 export default router;
