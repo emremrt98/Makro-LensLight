@@ -1,5 +1,9 @@
 import User from '../model/userModel.js';
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
+dotenv.config();
+
 const createUser = async (req, res) => {
     try {
         let { password } = req.body;
@@ -39,10 +43,14 @@ const findUser = async (req, res) => {
             })
         }
         if (controller) {
-            res.status(200).json({
-                succeed: true,
-                message: "You are Log in"
+            const token = createToken(user._id);
+            res.cookie("jsonwebtoken", token, {
+                httpOnly: true,
+                maxAge: 1000 * 60 * 60 * 24
             })
+
+            res.redirect('/user/dashboard');
+
         } else {
             res.status(401).json({
                 succeed: false,
@@ -58,7 +66,17 @@ const findUser = async (req, res) => {
     }
 }
 
+const getDashboardPage = (req, res) => {
+    res.render('dashboard', { name: "dashboard" });
+}
+
+const createToken = (userID) => {
+    return jwt.sign({ userID }, process.env.JWT_SECRET_KEY, { expiresIn: "1d" });
+}
+
+
 export {
     createUser,
-    findUser
+    findUser,
+    getDashboardPage
 }

@@ -1,7 +1,9 @@
 // Third Party Software
 import express from "express";
 const app = express();
-const port = 3000;
+import dotenv from 'dotenv';
+dotenv.config();
+import cookieParser from 'cookie-parser'
 
 // First Party Software
 import connection from './db.js'
@@ -15,6 +17,7 @@ connection();
 // Body Parser Middleware
 app.use(express.urlencoded());
 app.use(express.json());
+app.use(cookieParser());
 
 //Static Files Middleware
 app.use(express.static('src/public'));
@@ -28,4 +31,4 @@ app.use('/', pageRoute);
 app.use('/user', userRoute);
 app.use('/photos', photoRoute);
 
-app.listen(port, () => console.log("http://localhost:3000/"));
+app.listen(process.env.PORT || 5000, () => console.log("http://localhost:3000/"));
