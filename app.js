@@ -10,7 +10,7 @@ import connection from './db.js'
 import pageRoute from './src/router/pageRouter.js';
 import photoRoute from './src/router/photoRouter.js';
 import userRoute from './src/router/userRouter.js';
-
+import {checkUser} from './src/middlewares/authMiddleware.js'
 // DB Bağlantısı
 connection();
 
@@ -27,6 +27,7 @@ app.set('view engine', 'ejs');
 app.set('views', 'src/views');
 
 // Routes
+app.get('*', checkUser);
 app.use('/', pageRoute);
 app.use('/user', userRoute);
 app.use('/photos', photoRoute);
