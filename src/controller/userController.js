@@ -22,9 +22,18 @@ const createUser = async (req, res) => {
             })
         });
     } catch (err) {
+
+        let errors = {};
+        if (err.name === "ValidationError") {
+            Object.keys(err.errors).forEach(key => errors[key] = err.errors[key].message);
+        }
+
+       
+
+
         res.status(401).json({
             succeed: false,
-            err
+            errors
         })
     }
 }

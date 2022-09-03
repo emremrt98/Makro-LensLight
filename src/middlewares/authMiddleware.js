@@ -1,4 +1,3 @@
-
 import User from '../model/userModel.js';
 import jwt from 'jsonwebtoken';
 

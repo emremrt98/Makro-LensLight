@@ -19,4 +19,6 @@ router.get('/register', PageController.getRegisterPage);
 
 router.get('/login', PageController.getLoginPage);
 
+router.get('/logout', PageController.getLogout);
+
 export default router;

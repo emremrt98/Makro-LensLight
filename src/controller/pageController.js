@@ -1,3 +1,5 @@
+import { config } from "dotenv";
+
 const getHomePage = (req, res) => {
     console.log("req user", req.user);
     res.render('index', { name: "index" });
@@ -30,6 +32,13 @@ const getLoginPage = (req, res) => {
     res.render('login', { name: "login" });
 }
 
+const getLogout = (req, res) => {
+    res.cookie("jsonwebtoken", "", {
+        maxAge: 1,
+    });
+    res.redirect('/');
+}
+
 export {
     getHomePage,
     getAboutPage,
@@ -38,5 +47,6 @@ export {
     getProjectsPage,
     getContactPage,
     getRegisterPage,
-    getLoginPage
+    getLoginPage,
+    getLogout
 };
